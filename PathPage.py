@@ -35,7 +35,16 @@ G = nx.Graph()
 # reference: https://networkx.github.io/documentation/networkx-1.10/tutorial/tutorial.html
 G.add_weighted_edges_from([('FoodReps', 'John K.', 1.2), ('FoodReps', 'Katie Q.', 3.7),
                            ('FoodReps', 'Mindy T.', 4.1), ('FoodReps', 'Bob W.', 5.5),
-                           ('FoodReps', 'Yolanda B.', 2.4), ('FoodReps', 'Tim K.', .5)])
+                           ('FoodReps', 'Yolanda B.', 2.4), ('FoodReps', 'Tim K.', .5),
+                           ('John K.', 'Katie Q.', 1.5), ('John K.', 'Mindy T.', 3.1),
+                           ('John K.', 'Bob W.', 4.6), ('John K.', 'Yolanda B.', 5.8),
+                           ('John K.', 'Tim K.', 1.8),
+                           ('Katie Q.', 'Mindy T.', 1.1), ('Katie Q.', 'Bob W.', 2.4),
+                           ('Katie Q.', 'Yolanda B.', 4.6), ('Katie Q.', 'Tim K.', 6.8),
+                           ('Mindy T.', 'Bob W.', 2.2), ('Mindy T.', 'Yolanda B.', 3.6),
+                           ('Mindy T.', 'Tim K.', 4.8),
+                           ('Bob W.', 'Yolanda B.', 1.6), ('Bob W.', 'Tim K.', 2.3),
+                           ('Yolanda B.', 'Tim K.', 1.1)])
 # Placing the updated dataset information as output
 print('\nDataset information after adding more node and distance sets:\n', nx.info(G))
 
@@ -85,8 +94,8 @@ print(startPurple + '\n----------------------------------------- Algorithmic Pat
 # on the shortest paths Networkx documentation as
 # "https://networkx.github.io/documentation/networkx-1.10/reference/algorithms.shortest_paths.html".
 # reference: https://networkx.github.io/documentation/networkx-1.10/reference/algorithms.shortest_paths.html
-print(startBlue + '\nShortest path from Pensacola to Phoenix:\n'+ endColor, nx.shortest_path(G, 'Pensacola', 'Phoenix'))
-print(startBlue + '\nDijkstra path from Pensacola to Phoenix:\n'+ endColor, nx.dijkstra_path(G, 'Pensacola', 'Phoenix'))
+print(startBlue + '\nShortest path from FoodReps to Mindy T.:\n'+ endColor, nx.dijkstra_path(G, 'FoodReps', 'Mindy T.'))
+
 # Eulerian:
 # reference: https://networkx.github.io/documentation/stable/reference/algorithms/euler.html
 # Use-Case example: "The purpose of the proposed new roads is to make the town mailman-friendly. In graph theory terms,
@@ -102,8 +111,8 @@ print(startBlue + '\nIs semi-Eulerian:\n'+ endColor, nx.is_semieulerian(G))
 # defined: The Bellman-Ford algorithm is a graph search algorithm that finds the shortest path between a given source
 # vertex and all other vertices in the graph. This algorithm can be used on both weighted and unweighted graphs.
 # reference: https://brilliant.org/wiki/bellman-ford-algorithm/
-print(startBlue + '\nBellman Ford path from Los Angeles:\n'+ endColor,
-      nx.bellman_ford_predecessor_and_distance(G, 'Los Angeles'))
+print(startBlue + '\nBellman Ford path from FoodReps:\n'+ endColor,
+      nx.bellman_ford_predecessor_and_distance(G, 'FoodReps'))
 # Linear Algebra (Eigenvalues):
 # reference: https://networkx.github.io/documentation/stable/reference/linalg.html
 # defined: Using scaler multiplication (matrix multiplication = scaler multiplication) to create a new figure,
@@ -158,10 +167,7 @@ plt.show() # display
 print(startGreen + '-------------                           Algorithmic Path Experiments post-Eulerian Graph' +
       '                      -------------' + endColor, '\n')
 
-print(startBlue + '\nShortest path from Pensacola to Phoenix, Eulerized Graph:\n'+ endColor,
-      nx.shortest_path(G, 'Pensacola', 'Phoenix'))
-print(startBlue + '\nDijkstra path from Pensacola to Phoenix, Eulerized Graph:\n'+ endColor,
-      nx.dijkstra_path(G, 'Pensacola', 'Phoenix'))
+print(startBlue + '\nShortest path from FoodReps to Mindy T.:\n'+ endColor, nx.dijkstra_path(G, 'FoodReps', 'Mindy T.'))
 
 
 
