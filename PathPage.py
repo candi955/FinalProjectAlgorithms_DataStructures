@@ -64,7 +64,7 @@ print(startPurple + '\n----------------------------------------- Algorithmic Pat
 # on the shortest paths Networkx documentation as
 # "https://networkx.github.io/documentation/networkx-1.10/reference/algorithms.shortest_paths.html".
 # reference: https://networkx.github.io/documentation/networkx-1.10/reference/algorithms.shortest_paths.html
-print(startBlue + '\nShortest path from FoodReps to Mindy T.:\n'+ endColor, nx.dijkstra_path(G, 'FoodReps', 'Mindy T.'))
+print(startBlue + '\nShortest path from FoodReps to Mindy T., Dijkstra algorithm:\n'+ endColor, nx.dijkstra_path(G, 'FoodReps', 'Mindy T.'))
 
 # Eulerian:
 # reference: https://networkx.github.io/documentation/stable/reference/algorithms/euler.html
@@ -76,8 +76,10 @@ print(startBlue + '\nIs semi-Eulerian:\n'+ endColor, nx.is_semieulerian(G))
 # defined: The Bellman-Ford algorithm is a graph search algorithm that finds the shortest path between a given source
 # vertex and all other vertices in the graph. This algorithm can be used on both weighted and unweighted graphs.
 # reference: https://brilliant.org/wiki/bellman-ford-algorithm/
-print(startBlue + '\nBellman Ford path from FoodReps:\n'+ endColor,
+print(startBlue + '\nPredecessor and distance Bellman-Ford path from FoodReps:\n'+ endColor,
       nx.bellman_ford_predecessor_and_distance(G, 'FoodReps'))
+print(startBlue + '\nSingle source Bellman-Ford path from FoodReps:\n'+ endColor,
+      nx.single_source_bellman_ford_path(G, 'FoodReps'))
 # Linear Algebra (Eigenvalues):
 # reference: https://networkx.github.io/documentation/stable/reference/linalg.html
 # defined: Using scaler multiplication (matrix multiplication = scaler multiplication) to create a new figure,
@@ -89,6 +91,8 @@ print(startBlue + '\nBellman Ford path from FoodReps:\n'+ endColor,
 # reference: https://en.wikipedia.org/wiki/Modularity_(networks)
 print(startBlue + '\nThe Modularity Spectrum that returns eigenvalues of the modularity matrix of G:\n' +
       endColor, nx.modularity_spectrum(G))
+# Shortest Augmenting Path
+print(startBlue + '\nBidirectional shortest path:\n'+ endColor, nx.bidirectional_shortest_path(G, 'FoodReps', 'Mindy T.'))
 
 # -------------------------------- Creating the Eulerian Graph for Visualization --------------------------------
 
